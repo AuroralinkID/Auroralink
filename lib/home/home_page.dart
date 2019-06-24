@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 
 class HomePage extends StatelessWidget {
   static String tag = 'home-page';
+  final routes = <String, WidgetBuilder>{
+  HomePage.tag: (context) => HomePage(),
 
-  int _selectedIndex = 0;
+
+  };
+
+int _selectedIndex = 0;
 static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 static const List<Widget> _widgetOptions = <Widget>[
   Text(
@@ -33,7 +39,7 @@ void _onItemTapped(int index) {
   @override
   Widget build(BuildContext context) {
   return Scaffold
-    ( 
+    (
       backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text("Status Servis : On Prosses"),
@@ -41,10 +47,18 @@ void _onItemTapped(int index) {
         drawer: Drawer(
             child: ListView(
         children: <Widget>[
-          DrawerHeader(
-              child: Text('Profil'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
+            UserAccountsDrawerHeader(
+              accountName: Text("Ashish Rawat"),
+              accountEmail: Text("ashishrawat2911@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor:
+                    Theme.of(context).platform == TargetPlatform.iOS
+                        ? Colors.blue
+                        : Colors.white,
+                child: Text(
+                  "A",
+                  style: TextStyle(fontSize: 40.0),
+                ),
               ),
             ),
             ListTile(
@@ -173,32 +187,117 @@ void _onItemTapped(int index) {
                   ),
                   Padding(padding: EdgeInsets.only(bottom: 10.0)),
                   Text('Project', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 20.0)),
-                  Text('Website, App ', style: TextStyle(color: Colors.black45)),
+                  Text('Website, Aplikasi', style: TextStyle(color: Colors.black45)),
+                ]
+              ),
+            ),
+          ),
+          _buildTile(
+            Padding
+            (
+              padding: const EdgeInsets.all(24.0),
+              child: Column
+              (
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>
+                [
+                  Material
+                  (
+                    color: Colors.lightBlue,
+                    shape: CircleBorder(),
+                    child: Padding
+                    (
+                      padding: EdgeInsets.all(16.0),
+                      child: Icon(Icons.widgets, color: Colors.white, size: 30.0),
+                    )
+                  ),
+                  Padding(padding: EdgeInsets.only(bottom: 10.0)),
+                  Text('Produk', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 20.0)),
+                  Text('Lihat list Produk ', style: TextStyle(color: Colors.black45)),
+                ]
+              ),
+            ),
+          ),
+          _buildTile(
+            Padding
+            (
+              padding: const EdgeInsets.all(24.0),
+              child: Column
+              (
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>
+                [
+                  Material
+                  (
+                    color: Colors.lightBlue,
+                    shape: CircleBorder(),
+                    child: Padding
+                    (
+                      padding: EdgeInsets.all(16.0),
+                      child: Icon(Icons.extension, color: Colors.white, size: 30.0),
+                    )
+                  ),
+                  Padding(padding: EdgeInsets.only(bottom: 10.0)),
+                  Text('Jasa', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 20.0)),
+                  Text('Lihat list jasa ', style: TextStyle(color: Colors.black45)),
                 ]
               ),
             ),
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.dashboard),
-          title: Text('Beranda'),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.history),
-          title: Text('Riwayat'),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.notifications),
-          title: Text('Pemberitahuan'),
-        ),
-      ],
-      currentIndex: _selectedIndex,
-      selectedItemColor: Colors.amber[800],
-      onTap: _onItemTapped,
-    ),
+              floatingActionButton: FloatingActionButton(
+              backgroundColor: Colors.lightBlue,
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+              onPressed: () {},
+            ), 
+              floatingActionButtonLocation:    
+                FloatingActionButtonLocation.centerDocked,
+                bottomNavigationBar: BottomAppBar(
+              child: new Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.dashboard),
+                    color: Colors.white,
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.chat),
+                    color: Colors.white,
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.playlist_add),
+                    color: Colors.lightBlue,
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.notifications),
+                    color: Colors.lightBlue,
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.history),
+                    color: Colors.white,
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.notifications),
+                    color: Colors.white,
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              color: Colors.lightBlue,
+              shape: CircularNotchedRectangle(),
+            ),
     );
   }
 
