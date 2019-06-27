@@ -1,38 +1,43 @@
 import 'package:auroralink/auth/login.dart';
+import 'package:auroralink/jasa/jasa.dart';
 import 'package:auroralink/notifikasi/notifikasi.dart';
-import 'package:auroralink/pesan/pesan.dart';
+import 'package:auroralink/produk/produk.dart';
+import 'package:auroralink/project/project.dart';
 import 'package:auroralink/riwayat/riwayat.dart';
+import 'package:auroralink/support/support.dart';
 import 'package:auroralink/tambah/tambah.dart';
+import 'package:auroralink/ticket/ticket.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:auroralink/servis/index.dart';
 import 'package:flutter/gestures.dart';
-import 'package:auroralink/pesan/pesan.dart';
+import 'package:auroralink/chat/chat.dart';
 
-//INI CLASS ROUTE VOID//
-void main() {
-  runApp(MaterialApp(
-    home: HomePage(), // becomes the route named '/'
-    routes: <String, WidgetBuilder>{
-      '/servis': (BuildContext context) => Servis(),
-      '/pesan': (BuildContext context) => Pesan(),
-      '/login': (BuildContext context) => LoginPage(),
-    },
-  ));
-}
 //INI CLASS BOTTOMNAV//
 class BottomNav extends StatefulWidget {
-
   @override
   _BottomNavState createState() => _BottomNavState();
 }
 
-class _BottomNavState extends State<BottomNav> {
+class _BottomNavState extends State<BottomNav>
+    with SingleTickerProviderStateMixin {
+  TabController controller;
+
+  @override
+  void initState() {
+    controller = new TabController(vsync: this, length: 4);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-    );
+    return Scaffold();
   }
 }
 
@@ -98,7 +103,7 @@ class BuildTile extends StatelessWidget {
   final IconData ikon;
   final String judul;
   final String ket;
-  final GestureTapCallback ontap;
+  final Function() ontap;
 
   @override
   Widget build(BuildContext context) {
@@ -135,8 +140,11 @@ class BuildTile extends StatelessWidget {
                 ],
               ),
             ),
-            onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => Servis())),
+            onTap: ontap != null
+                ? () => ontap()
+                : () {
+                    print('Not set yet');
+                  },
           ),
         ],
       ),
@@ -202,31 +210,43 @@ class HomePage extends StatelessWidget {
             judul: "Servis",
             ket: "Laptop, Komputer",
             ikon: Icons.computer,
+            ontap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => Servis())),
           ),
           new BuildTile(
             judul: "Support",
             ket: "Troubleshoot",
             ikon: Icons.business_center,
+            ontap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => Support())),
           ),
           new BuildTile(
             judul: "Ticket",
             ket: "Bantuan Remote",
             ikon: Icons.settings_remote,
+            ontap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => Ticket())),
           ),
           new BuildTile(
             judul: "Project",
             ket: "Website, Aplikasi",
             ikon: Icons.code,
+            ontap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => Project())),
           ),
           new BuildTile(
             judul: "Produk",
             ket: "List Produk",
             ikon: Icons.widgets,
+            ontap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => Produk())),
           ),
           new BuildTile(
             judul: "Jasa",
             ket: "List jasa",
             ikon: Icons.dashboard,
+            ontap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => Jasa())),
           ),
         ],
       ),
