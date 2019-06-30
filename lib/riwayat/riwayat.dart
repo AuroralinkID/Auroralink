@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:auroralink/home/home_page.dart';
 
 class Riwayat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Ini halaman Riwayat"),
-      ),
-
+      body: _Riwayat(),
+    );
+  }
+}
+class _Riwayat extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      itemCount: 1000,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text('row $index'),
+        );
+      },
+      separatorBuilder: (context, index) {
+        return Divider();
+      },
     );
   }
 }

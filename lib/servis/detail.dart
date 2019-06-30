@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:auroralink/servis/index.dart';
 
 class ServisDetail extends StatelessWidget {
   @override

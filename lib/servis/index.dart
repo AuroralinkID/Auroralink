@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:auroralink/home/home_page.dart';
 import 'package:auroralink/servis/detail.dart';
 
-class serp extends StatelessWidget {
-  serp({this.img, this.judul, this.ket});
+class Serp extends StatelessWidget {
+  Serp({this.img, this.judul, this.ket});
   final String img;
   final String judul;
   final String ket;

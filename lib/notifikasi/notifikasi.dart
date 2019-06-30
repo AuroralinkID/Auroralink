@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:auroralink/home/home_page.dart';
 
 class Notifikasi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Ini Halaman Notifikasi"),
-      ),
+      body: _Notifikasi(),
+    );
+  }
+}
 
+class _Notifikasi extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      itemCount: 1000,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text('row $index'),
+        );
+      },
+      separatorBuilder: (context, index) {
+        return Divider();
+      },
     );
   }
 }

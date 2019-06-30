@@ -1,62 +1,13 @@
-import 'package:auroralink/auth/login.dart';
-import 'package:auroralink/jasa/jasa.dart';
+import 'package:auroralink/chat/chat.dart';
+import 'package:auroralink/home/home.dart';
+import 'package:auroralink/navbar/fab_bottom_app_bar.dart';
+import 'package:auroralink/navbar/fab_with_icons.dart';
+import 'package:auroralink/navbar/layout.dart';
 import 'package:auroralink/notifikasi/notifikasi.dart';
-import 'package:auroralink/produk/produk.dart';
-import 'package:auroralink/project/project.dart';
 import 'package:auroralink/riwayat/riwayat.dart';
-import 'package:auroralink/support/support.dart';
-import 'package:auroralink/tambah/tambah.dart';
-import 'package:auroralink/ticket/ticket.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:auroralink/servis/index.dart';
-import 'package:flutter/gestures.dart';
-import 'package:auroralink/chat/chat.dart';
-
-//INI CLASS BOTTOMNAV//
-class BottomNav extends StatefulWidget {
-  @override
-  _BottomNavState createState() => _BottomNavState();
-}
-
-class _BottomNavState extends State<BottomNav>
-    with SingleTickerProviderStateMixin {
-  TabController controller;
-
-  @override
-  void initState() {
-    controller = new TabController(vsync: this, length: 4);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
-
-//INI CLASS LISTBAR//
-class ListBar extends StatelessWidget {
-  ListBar({this.teks, this.icon});
-  final IconData icon;
-  final String teks;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: new ListTile(
-        title: Text(teks),
-        trailing: Icon(icon),
-      ),
-    );
-  }
-}
+import 'package:auroralink/appbar/drawer.dart';
 
 //INI CLASS DRAWERHEADER//
 class DrawerHeader extends StatelessWidget {
@@ -81,80 +32,32 @@ class DrawerHeader extends StatelessWidget {
   }
 }
 
-//INI CLASS _BUILDTILE//
-Widget _buildTile(Widget child, {Function() onTap}) {
-  return Material(
-      elevation: 14.0,
-      borderRadius: BorderRadius.circular(12.0),
-      shadowColor: Color(0x802196F3),
-      child: InkWell(
-          // Do onTap() if it isn't null, otherwise do print()
-          onTap: onTap != null
-              ? () => onTap()
-              : () {
-                  print('Not set yet');
-                },
-          child: child));
-}
+//INI CLASS HOMEPAGE//
+class HomePage extends StatefulWidget {
+  HomePage({Key key, this.title}) : super(key: key);
 
-//INI JUGA CLASS BUILDTILE//
-class BuildTile extends StatelessWidget {
-  BuildTile({this.ikon, this.judul, this.ket, this.ontap});
-  final IconData ikon;
-  final String judul;
-  final String ket;
-  final Function() ontap;
+  final String title;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: GridView.count(
-        crossAxisCount: 1,
-        crossAxisSpacing: 12.0,
-        mainAxisSpacing: 12.0,
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-        children: <Widget>[
-          _buildTile(
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Material(
-                    color: Colors.lightBlue,
-                    shape: CircleBorder(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Icon(ikon, color: Colors.white, size: 20.0),
-                    ),
-                  ),
-                  Padding(padding: EdgeInsets.only(bottom: 5.0)),
-                  Text(judul,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20.0)),
-                  Text(ket,
-                      style: TextStyle(color: Colors.black45, fontSize: 12.0)),
-                ],
-              ),
-            ),
-            onTap: ontap != null
-                ? () => ontap()
-                : () {
-                    print('Not set yet');
-                  },
-          ),
-        ],
-      ),
-    );
-  }
+  _HomePageState createState() => _HomePageState();
 }
 
-//INI CLASS HOMEPAGE//
-class HomePage extends StatelessWidget {
-  static String tag = 'home-page';
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  int _lastSelected = 0;
+
+  final _page = [Home(), Pesan(), Riwayat(), Notifikasi(),];
+
+  void _selectedTab(int index) {
+    setState(() {
+      _lastSelected = index;
+    });
+  }
+
+  void _selectedFab(int index) {
+    setState(() {
+      _lastSelected = 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -173,26 +76,26 @@ class HomePage extends StatelessWidget {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            new DrawerHeader(
+            DrawerHeader(
               teks: "Sofan wahyudi",
               email: "aurora.an98@gmail.com",
               img: Image.asset('assets/img/icon_auroralink.png'),
             ),
             new ListBar(
               teks: "Profile",
-              icon: Icons.arrow_forward,
+              icon: Icons.arrow_forward_ios,
             ),
             new ListBar(
               teks: "Pesan",
-              icon: Icons.arrow_forward,
+              icon: Icons.arrow_forward_ios,
             ),
             new ListBar(
               teks: "Pengaturan",
-              icon: Icons.arrow_forward,
+              icon: Icons.arrow_forward_ios,
             ),
             new ListBar(
               teks: "Logout",
-              icon: Icons.arrow_forward,
+              icon: Icons.arrow_forward_ios,
             ),
           ],
         ),
@@ -200,127 +103,46 @@ class HomePage extends StatelessWidget {
       //AKHIRAN DRAWER//
 
       //AWALAN BODY//
-      body: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 12.0,
-        mainAxisSpacing: 12.0,
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-        children: <Widget>[
-          new BuildTile(
-            judul: "Servis",
-            ket: "Laptop, Komputer",
-            ikon: Icons.computer,
-            ontap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => Servis())),
-          ),
-          new BuildTile(
-            judul: "Support",
-            ket: "Troubleshoot",
-            ikon: Icons.business_center,
-            ontap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => Support())),
-          ),
-          new BuildTile(
-            judul: "Ticket",
-            ket: "Bantuan Remote",
-            ikon: Icons.settings_remote,
-            ontap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => Ticket())),
-          ),
-          new BuildTile(
-            judul: "Project",
-            ket: "Website, Aplikasi",
-            ikon: Icons.code,
-            ontap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => Project())),
-          ),
-          new BuildTile(
-            judul: "Produk",
-            ket: "List Produk",
-            ikon: Icons.widgets,
-            ontap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => Produk())),
-          ),
-          new BuildTile(
-            judul: "Jasa",
-            ket: "List jasa",
-            ikon: Icons.dashboard,
-            ontap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => Jasa())),
-          ),
+      body: _page.elementAt(_lastSelected),
+      //AKHIRAN BODY//
+      //AWALAN BOTTOM NAVBAR//
+      bottomNavigationBar: FABBottomAppBar(
+        color: Colors.white,
+        selectedColor: Colors.blueGrey,
+        notchedShape: CircularNotchedRectangle(),
+        onTabSelected: _selectedTab,
+        items: [
+          FABBottomAppBarItem(iconData: Icons.home, text: 'Home'),
+          FABBottomAppBarItem(iconData: Icons.chat, text: 'Chat'),
+          FABBottomAppBarItem(iconData: Icons.event_note, text: 'Riwayat'),
+          FABBottomAppBarItem(
+              iconData: Icons.notifications, text: 'Notifikasi'),
         ],
       ),
-      //AKHIRAN BODY//
-
-      //AWALAN BOTTOM NAVBAR//
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.lightBlue,
-          child: const Icon(
-            Icons.queue_play_next,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Tambah()),
-            );
-          }),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        child: new Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            IconButton(
-                icon: Icon(Icons.home),
-                color: Colors.white,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
-                  );
-                }),
-            IconButton(
-                icon: Icon(Icons.chat),
-                color: Colors.white,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Pesan()),
-                  );
-                }),
-            IconButton(
-              icon: Icon(Icons.play_arrow),
-              color: Colors.lightBlue,
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.music_note),
-              color: Colors.lightBlue,
-              onPressed: () {},
-            ),
-            IconButton(
-                icon: Icon(Icons.event_note),
-                color: Colors.white,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Riwayat()),
-                  );
-                }),
-            IconButton(
-                icon: Icon(Icons.notifications),
-                color: Colors.white,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Notifikasi()),
-                  );
-                }),
-          ],
-        ),
-        color: Colors.lightBlue,
-        shape: CircularNotchedRectangle(),
+      floatingActionButton: _buildFab(
+          context), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Widget _buildFab(BuildContext context) {
+    final icons = [Icons.sms, Icons.mail, Icons.phone];
+    return AnchoredOverlay(
+      showOverlay: true,
+      overlayBuilder: (context, offset) {
+        return CenterAbout(
+          position: Offset(offset.dx, offset.dy - icons.length * 35.0),
+          child: FabWithIcons(
+            icons: icons,
+            onIconTapped: _selectedFab,
+          ),
+        );
+      },
+      child: FloatingActionButton(
+        onPressed: () {},
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+        elevation: 2.0,
       ),
     );
   }
