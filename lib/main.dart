@@ -1,4 +1,4 @@
-import 'package:auroralink/home/home_page.dart';
+import 'package:auroralink/home/home.dart';
 import 'package:flutter/material.dart';
 
 

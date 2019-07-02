@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auroralink/produk/daftar_produk.dart';
+import 'package:auroralink/produk/header.dart';
+import 'package:auroralink/produk/footer.dart';
 
 class ProdukDetail extends StatefulWidget {
   ProdukDetail({@required this.detProd});
@@ -13,27 +15,82 @@ class _ProdukDetailState extends State<ProdukDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        alignment: Alignment.center,
-        margin: EdgeInsets.all(30.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FadeInImage.assetNetwork(
-              placeholder: "image/no_image.png",
-              image: widget.detProd.thumbnailUrl,
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            OutlineButton(
-              child: Icon(Icons.close),
-              onPressed: () => Navigator.of(context).pop(),
-            )
-          ],
-        ),
+      body: new ListView(
+        children: <Widget>[
+          new MHeader(detProd: widget.detProd),
+          new JudulProduk(),
+          divider,
+          new Mfooter(detProd: null,),
+          //new SectionBody(detProd: widget.detProd,),
+          // new SectionNama(
+          //   detProd: widget.detProd,
+          // ),
+          // new SectionIcon(),
+          // new SectionDeskripsi(),
+        ],
       ),
     );
   }
 }
+
+// class SectionBody extends StatelessWidget {
+//   SectionBody({@required this.detProd});
+//   final DaftarProduk detProd;
+//   @override
+//   Widget build(BuildContext context) {
+//     return new Container(
+//         child: new Container(
+//       width: 60.0,
+//       height: 60.0,
+//       decoration: new BoxDecoration(
+//           gradient: btnGradient,
+//           shape: BoxShape.circle,
+//           boxShadow: <BoxShadow>[
+//             new BoxShadow(
+//                 blurRadius: 10.0,
+//                 color: Colors.black12,
+//                 offset: new Offset(0.0, 10.0))
+//           ]),
+//     ));
+//   }
+// }
+
+// class SectionNama extends StatelessWidget {
+//   SectionNama({@required this.detProd});
+//   final DaftarProduk detProd;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       padding: new EdgeInsets.all(5.0),
+//       child: new Row(
+//         children: <Widget>[
+//           new Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: <Widget>[
+//               new Text("Ini Nama Produk", style: TextStyle(fontSize: 20.0)),
+//               new Text(detProd.title, style: TextStyle(fontSize: 10.0)),
+//             ],
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+// class SectionIcon extends StatelessWidget {
+//   SectionIcon({@required this.detProd});
+//   final DaftarProduk detProd;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row();
+//   }
+// }
+
+// class SectionDeskripsi extends StatelessWidget {
+//   SectionDeskripsi({@required this.detProd});
+//   final DaftarProduk detProd;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }
