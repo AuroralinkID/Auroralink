@@ -4,6 +4,7 @@ import 'package:auroralink/produk/produkCell.dart';
 import 'package:auroralink/produk/Rest.dart';
 import 'package:auroralink/produk/detail.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Produk extends StatefulWidget {
   @override
@@ -41,7 +42,7 @@ class _ProdukState extends State<Produk> {
 
   circularProggress() {
     return Center(
-      child: CircularProgressIndicator(),
+      child: SpinKitWanderingCubes(color: Colors.lightBlue, shape: BoxShape.circle),
     );
   }
 

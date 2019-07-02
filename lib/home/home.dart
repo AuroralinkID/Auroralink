@@ -69,11 +69,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Colors.white,
       //AWALAN APPBAR//
-      appBar: AppBar(
+      appBar: new AppBar(
+        automaticallyImplyLeading: true,
         title: Text(
-          "Status Servis : On Prosses",
-          style: TextStyle(color: Colors.white, fontSize: 20.0),
+          "Cari Produk atau Jasa",
+          style: TextStyle(fontSize: 17.0),
         ),
+        actions: <Widget>[
+          IconButton(
+            tooltip: 'Search',
+            icon: const Icon(
+              Icons.search,
+            ),
+            onPressed: () {
+              //    showSearchPage(context, _searchDelegate);
+            },
+          )
+        ],
       ),
       //AKHIRAN APPBAR //
 
