@@ -1,12 +1,10 @@
-import 'package:auroralink/home/home.dart';
 import 'package:flutter/material.dart';
-
+import 'package:auroralink/src/Screen/launcher.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  final routes = <String, WidgetBuilder>{
-  };
+  final routes = <String, WidgetBuilder>{};
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightBlue,
         fontFamily: 'Nunito',
       ),
-      home: HomePage(),
+      home: new Launcher(),
       routes: routes,
     );
   }
