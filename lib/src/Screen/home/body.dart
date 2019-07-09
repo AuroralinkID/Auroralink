@@ -1,7 +1,6 @@
 //INI CLASS _BUILDTILE//
-
-import 'package:auroralink/src/Models/Home/card.dart';
 import 'package:auroralink/src/Screen/IconPallete.dart';
+import 'package:auroralink/src/Screen/home/card.dart';
 import 'package:auroralink/src/Screen/home/gird.dart';
 import 'package:auroralink/src/Screen/jasa/listjasa.dart';
 import 'package:auroralink/src/Screen/lokasi/lokasi.dart';
@@ -9,6 +8,7 @@ import 'package:auroralink/src/Screen/portofolio/portofolio.dart';
 import 'package:auroralink/src/Screen/produk/produk.dart';
 import 'package:auroralink/src/Screen/project/project.dart';
 import 'package:auroralink/src/Screen/proposal/proposal.dart';
+import 'package:auroralink/src/Screen/servis/Servis.dart';
 import 'package:auroralink/src/Screen/status/status.dart';
 import 'package:auroralink/src/Screen/support/support.dart';
 import 'package:auroralink/src/Screen/ticket/ticket.dart';
@@ -62,43 +62,65 @@ class Home extends StatelessWidget {
             ),
           ),
           new Container(
-            height: 120.0,
-            child: new Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                new CardBody(
-                  title: "Portofolio",
-                  ikon: Icons.account_balance,
-                  warna: Colors.white,
-                   ontap: () => Navigator.of(context)
-                       .push(MaterialPageRoute(builder: (_) => Portofolio())),
-                ),
-                new CardBody(
-                  title: "Proposal",
-                  ikon: Icons.assignment,
-                  warna: Colors.white,
-                   ontap: () => Navigator.of(context)
-                       .push(MaterialPageRoute(builder: (_) => Proposal())),
-                ),
-                new CardBody(
-                  title: "Lokasi",
-                  ikon: Icons.pin_drop,
-                  warna: Colors.white,
-                   ontap: () => Navigator.of(context)
-                       .push(MaterialPageRoute(builder: (_) => Lokasi())),
-                ),
-                new CardBody(
-                  title: "Status",
-                  ikon: Icons.info,
-                  warna: Colors.white,
-                   ontap: () => Navigator.of(context)
-                       .push(MaterialPageRoute(builder: (_) => Status())),
-                ),
-              ],
+            child: new Material(
+              child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    new CardBody(
+                      title: "Pembayaran",
+                      ikon: Icons.account_balance_wallet,
+                      warna: Colors.white,
+                      ontap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => Portofolio())),
+                    ),
+                    new CardBody(
+                      title: "Proposal",
+                      ikon: Icons.assignment,
+                      warna: Colors.white,
+                      ontap: () => Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (_) => Proposal())),
+                    ),
+                    new CardBody(
+                      title: "Lokasi",
+                      ikon: Icons.pin_drop,
+                      warna: Colors.white,
+                      ontap: () => Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (_) => Lokasi())),
+                    ),
+                    new CardBody(
+                      title: "Status",
+                      ikon: Icons.info,
+                      warna: Colors.white,
+                      ontap: () => Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (_) => Status())),
+                    ),
+                  ]),
             ),
           ),
-          Container(
+          // new CardBody(
+          //   title: "Proposal",
+          //   ikon: Icons.assignment,
+          //   warna: Colors.white,
+          //   ontap: () => Navigator.of(context)
+          //       .push(MaterialPageRoute(builder: (_) => Proposal())),
+          // ),
+          // new CardBody(
+          //   title: "Lokasi",
+          //   ikon: Icons.pin_drop,
+          //   warna: Colors.white,
+          //   ontap: () => Navigator.of(context)
+          //       .push(MaterialPageRoute(builder: (_) => Lokasi())),
+          // ),
+          // new CardBody(
+          //   title: "Status",
+          //   ikon: Icons.info,
+          //   warna: Colors.white,
+          //   ontap: () => Navigator.of(context)
+          //       .push(MaterialPageRoute(builder: (_) => Status())),
+          // ),
+
+          new Container(
             child: GridView.count(
               crossAxisSpacing: 7.0,
               mainAxisSpacing: 7.0,
@@ -111,7 +133,7 @@ class Home extends StatelessWidget {
                   ikon: Icons.computer,
                   warna: IconPallete.menuRide,
                   ontap: () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => Home())),
+                      .push(MaterialPageRoute(builder: (_) => Serp())),
                 ),
                 new BuildTile(
                   judul: "Support",

@@ -39,7 +39,7 @@ class _WebDevState extends State<WebDev> {
   Widget builtlist(AsyncSnapshot<List<Webdev>> snapshot){
     return ListView.builder(
       itemCount: snapshot.data.length,
-      itemBuilder: (BuildContext, int index){
+      itemBuilder: (buildcontext, int index){
         return ListTile(
            title: Text(snapshot.data[index].judul),
         );

@@ -79,7 +79,7 @@ class _ProdukState extends State<Produk> {
                 builder: (context, snapshot) {
                   //
                   if (snapshot.hasError) {
-                    return Text("Ups.. ${snapshot.error}");
+                    return Text("Ups... ${snapshot.error}");
                   }
                   //
                   if (snapshot.hasData) {

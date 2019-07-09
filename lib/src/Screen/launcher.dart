@@ -27,7 +27,7 @@ class _LauncherState extends State<Launcher> {
     return new Scaffold(
       backgroundColor: Colors.white,
       body: new Center(
-        child: new Image.asset("assets/img/intro.gif"),
+        child: new Image.asset("assets/img/auroralink.gif"),
         // new Image.network("https://media.giphy.com/media/fV7DbUDHyx1JtmBGvh/giphy.gif")
       ),
     );
