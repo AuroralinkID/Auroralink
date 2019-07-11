@@ -1,37 +1,38 @@
-import 'package:auroralink/src/Bloc/Jasa/WebdevBloc.dart';
-import 'package:auroralink/src/Models/Jasa/WebdevModels.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:auroralink/src/Models/Jasa/ServisModels.dart';
+import 'package:auroralink/src/Bloc/Jasa/JasaServisBloc.dart';
 
-class WebDev extends StatefulWidget {
+class JasaServis extends StatefulWidget {
   @override
-  _WebDevState createState() => _WebDevState();
+  _JasaServisState createState() => _JasaServisState();
 }
 
-class _WebDevState extends State<WebDev> {
+class _JasaServisState extends State<JasaServis> {
   @override
   void initState() {
-    webdevbloc.fetchAllWebdev();
+    servisbloc.fetchAllServis();
     super.initState();
   }
-
   @override
   void dispose() {
-    webdevbloc.dispose();
+    servisbloc.dispose();
     super.dispose();
   }
-    circularProggress() {
+      circularProggress() {
     return Center(
       child: SpinKitWanderingCubes(color: Colors.lightBlue, shape: BoxShape.circle),
     );
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
     body: StreamBuilder(
-      stream: webdevbloc.webDevall, 
-      builder: (context, AsyncSnapshot<Webdev> snapshot) {
+      stream: servisbloc.servisall, 
+      builder: (context, AsyncSnapshot<Servis> snapshot) {
         if(snapshot.hasData){
           return builtlist(snapshot);
         }else if(snapshot.hasError){
@@ -42,16 +43,15 @@ class _WebDevState extends State<WebDev> {
     )
     );
   }
-  Widget builtlist(AsyncSnapshot<Webdev> snapshot){
+  Widget builtlist(AsyncSnapshot<Servis> snapshot){
     return ListView.builder(
-      itemCount: snapshot.data.listdatum.length,
+      itemCount: snapshot.data.servis.length,
       itemBuilder: (buildcontext, int index){
         return ListTile(
-           title: Text(snapshot.data.listdatum[index].judul),
+           title: Text(snapshot.data.servis[index].namaServis),
+           subtitle: Text(snapshot.data.servis[index].deskServis),
         );
       },
     );
-
   }
-
 }

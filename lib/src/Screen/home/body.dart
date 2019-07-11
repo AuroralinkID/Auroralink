@@ -2,7 +2,7 @@
 import 'package:auroralink/src/Screen/IconPallete.dart';
 import 'package:auroralink/src/Screen/home/card.dart';
 import 'package:auroralink/src/Screen/home/gird.dart';
-import 'package:auroralink/src/Screen/jasa/listjasa.dart';
+import 'package:auroralink/src/Screen/jasa/kategoriJasa.dart';
 import 'package:auroralink/src/Screen/lokasi/lokasi.dart';
 import 'package:auroralink/src/Screen/portofolio/portofolio.dart';
 import 'package:auroralink/src/Screen/produk/produk.dart';
