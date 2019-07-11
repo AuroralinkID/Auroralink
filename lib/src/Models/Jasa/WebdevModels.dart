@@ -4,47 +4,55 @@
 
 import 'dart:convert';
 
-List<Webdev> webdevFromJson(String str) {
-  final jsonData = json.decode(str);
-  return new List<Webdev>.from(jsonData.map((x) => Webdev.fromJson(x)));
-}
+Webdev webdevFromJson(String str) => Webdev.fromJson(json.decode(str));
 
-// Webdev webdevFromJson(String str) => Webdev.fromJson(json.decode(str));
-
-//  String webdevToJson(Webdev data) => json.encode(data.toJson());
-String webdevToJson(List<Webdev> data) {
-  final dyn = new List<dynamic>.from(data.map((x) => x.toJson()));
-  return json.encode(dyn);
-}
+String webdevToJson(Webdev data) => json.encode(data.toJson());
 
 class Webdev {
-    int id;
-    String judul;
-    String konten;
-    String tags;
-    String webSatu;
-    String webDua;
-    String webTiga;
-    String webEmpat;
-    String webLima;
-    String webEnam;
-    int cmsUsersId;
+  List<Datum> listdatum = [];
 
-    Webdev({
-        this.id,
-        this.judul,
-        this.konten,
-        this.tags,
-        this.webSatu,
-        this.webDua,
-        this.webTiga,
-        this.webEmpat,
-        this.webLima,
-        this.webEnam,
-        this.cmsUsersId,
-    });
+  Webdev({
+    this.listdatum,
+  });
 
-    factory Webdev.fromJson(Map<String, dynamic> json) => new Webdev(
+  factory Webdev.fromJson(Map<String, dynamic> json) => new Webdev(
+        listdatum:
+            new List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "data": new List<dynamic>.from(listdatum.map((x) => x.toJson())),
+      };
+}
+
+class Datum {
+  int id;
+  String judul;
+  String konten;
+  String tags;
+  String webSatu;
+  String webDua;
+  String webTiga;
+  String webEmpat;
+  String webLima;
+  String webEnam;
+  int cmsUsersId;
+
+  Datum({
+    this.id,
+    this.judul,
+    this.konten,
+    this.tags,
+    this.webSatu,
+    this.webDua,
+    this.webTiga,
+    this.webEmpat,
+    this.webLima,
+    this.webEnam,
+    this.cmsUsersId,
+  });
+
+  factory Datum.fromJson(Map<String, dynamic> json) => new Datum(
         id: json["id"],
         judul: json["judul"],
         konten: json["konten"],
@@ -56,9 +64,9 @@ class Webdev {
         webLima: json["web_lima"],
         webEnam: json["web_enam"],
         cmsUsersId: json["cms_users_id"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "judul": judul,
         "konten": konten,
@@ -70,5 +78,5 @@ class Webdev {
         "web_lima": webLima,
         "web_enam": webEnam,
         "cms_users_id": cmsUsersId,
-    };
+      };
 }

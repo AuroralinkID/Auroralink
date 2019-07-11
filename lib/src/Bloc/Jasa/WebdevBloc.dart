@@ -4,10 +4,10 @@ import 'package:rxdart/rxdart.dart';
 
 class WebdevBloc{
   final _repository = Repository();
-  final _webdevlist = PublishSubject<List<Webdev>>();
-  Observable<List<Webdev>> get webDevall => _webdevlist.stream;
+  final _webdevlist = PublishSubject<Webdev>();
+  Observable<Webdev> get webDevall => _webdevlist.stream;
   fetchAllWebdev() async {
-    List<Webdev> webdev = await _repository.fetchAllWebdev();
+    Webdev webdev = await _repository.fetchAllWebdev();
     _webdevlist.sink.add(webdev);
   }
   dispose(){
