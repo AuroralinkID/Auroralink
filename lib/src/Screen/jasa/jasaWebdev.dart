@@ -16,11 +16,11 @@ class _WebDevState extends State<WebDev> {
     super.initState();
   }
 
-  @override
-  void dispose() {
-    webdevbloc.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   webdevbloc.dispose();
+  //   super.dispose();
+  // }
     circularProggress() {
     return Center(
       child: SpinKitWanderingCubes(color: Colors.lightBlue, shape: BoxShape.circle),

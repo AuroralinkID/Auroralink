@@ -5,7 +5,7 @@ import 'package:http/http.dart' show Client;
 class ServisAPI {
   Client client = Client();
   final _url = "https://auroralink.id/api/gservis";
-  Future<Servis> ambilServislist() async{
+  Future<Servis> ambildata() async{
     final response = await client.get(_url);
     if (response.statusCode == 200) {
       return compute(servisFromJson, response.body);
@@ -14,3 +14,4 @@ class ServisAPI {
     }
   }
 }
+

@@ -1,14 +1,14 @@
-import 'package:auroralink/src/Models/Jasa/WebdevModels.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' show Client;
+import 'package:auroralink/src/Models/Jasa/SysadminModels.dart';
 
-class WebdevAPI {
+class SysadminAPI {
   Client client = Client();
-  final _url = "https://auroralink.id/api/webdev";
-  Future<Webdev> ambildata() async{
+  final _url = "https://auroralink.id/api/gsysadmin";
+  Future<Sysadmin> ambildata() async {
     final response = await client.get(_url);
     if (response.statusCode == 200) {
-      return compute(webdevFromJson, response.body);
+      return compute(sysadminFromJson, response.body);
     } else {
       throw Exception("Gagal memuat data");
     }

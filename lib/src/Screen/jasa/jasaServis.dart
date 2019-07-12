@@ -14,11 +14,11 @@ class _JasaServisState extends State<JasaServis> {
     servisbloc.fetchAllServis();
     super.initState();
   }
-  @override
-  void dispose() {
-    servisbloc.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   servisbloc.dispose();
+  //   super.dispose();
+  // }
       circularProggress() {
     return Center(
       child: SpinKitWanderingCubes(color: Colors.lightBlue, shape: BoxShape.circle),
