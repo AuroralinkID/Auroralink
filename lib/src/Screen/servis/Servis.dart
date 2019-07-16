@@ -1,5 +1,3 @@
-
-import 'package:auroralink/src/Screen/servis/detail.dart';
 import 'package:flutter/material.dart';
 import 'package:auroralink/src/Models/aurora_icons.dart';
 class Serp extends StatelessWidget {
@@ -33,7 +31,7 @@ class Servis extends StatelessWidget {
           title: Text('Horse'),
           subtitle: Text('A strong animal'),
           trailing: Icon(Aurora.analytics),
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ServisDetail())),
+          // onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => null())),
           selected: true,
         ),
         ],

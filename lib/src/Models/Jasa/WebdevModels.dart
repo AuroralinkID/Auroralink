@@ -9,7 +9,7 @@ Webdev webdevFromJson(String str) => Webdev.fromJson(json.decode(str));
 String webdevToJson(Webdev data) => json.encode(data.toJson());
 
 class Webdev {
-  List<Datum> listdatum = [];
+  List<Datum> listdatum;
 
   Webdev({
     this.listdatum,
