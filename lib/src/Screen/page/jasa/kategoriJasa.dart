@@ -1,3 +1,4 @@
+import 'package:auroralink/src/Screen/page/produk/widget/includes/searchBar.dart';
 import 'package:auroralink/src/Screen/property/IconPallete.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
@@ -32,15 +33,23 @@ class _JasaState extends State<Jasa> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new GradientAppBar(
-        title: new Text(
-          "Kategori Jasa",
-        ),
-        backgroundColorStart: IconPallete.menuMart,
-        backgroundColorEnd: IconPallete.menuBluebird,
+      appBar: AppBar(
+        title: Text("Cari Jasa"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: SearchBar());
+            },
+          ),
+          Icon(Icons.keyboard_voice),
+          Padding(
+            padding: EdgeInsets.only(right: 20.0),
+          ),
+        ],
         bottom: TabBar(
           controller: controller,
-          labelColor: IconPallete.grey, 
+          labelColor: IconPallete.grey,
           tabs: <Widget>[
             new Tab(
               icon: new Icon(Icons.desktop_windows),

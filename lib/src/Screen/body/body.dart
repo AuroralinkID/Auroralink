@@ -5,7 +5,7 @@ import 'package:auroralink/src/Screen/page/jasa/kategoriJasa.dart';
 import 'package:auroralink/src/Screen/page/klien/klien.dart';
 import 'package:auroralink/src/Screen/page/lokasi/lokasi.dart';
 import 'package:auroralink/src/Screen/page/portofolio/portofolio.dart';
-import 'package:auroralink/src/Screen/page/produk/porduk.dart';
+import 'package:auroralink/src/Screen/page/produk/produk.dart';
 import 'package:auroralink/src/Screen/page/project/project.dart';
 import 'package:auroralink/src/Screen/page/proposal/proposal.dart';
 import 'package:auroralink/src/Screen/page/servis/Servis.dart';
