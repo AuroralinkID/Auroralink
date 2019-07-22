@@ -1,28 +1,17 @@
-import 'package:auroralink/src/Bloc/Produk/DaftarProdukBloc.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:auroralink/src/Models/Produk/ProdukModels.dart';
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' show Client;
 
-class RestProduk {
-  static const String url = "https://jsonplaceholder.typicode.com/photos";
-
-  static Future<List<DaftarProduk>> getProduk() async {
-    try {
-      final response = await http.get(url);
-      if (response.statusCode == 200) {
-        List<DaftarProduk> list = parseProduk(response.body);
-        return list;
-      } else {
-        throw Exception("Ups.. Error");
-      }
-    } catch (e) {
-      throw Exception(e.toString());
+class ProdukAPI{
+    Client client = Client();
+  final _url = "https://auroralink.id/api/aplikasi";
+  Future<DaftarProduk> ambildata() async{
+    final response = await client.get(_url);
+    if (response.statusCode == 200) {
+      return compute(daftarProdukFromJson, response.body);
+    } else {
+      throw Exception("Gagal memuat data");
     }
   }
 }
 
-List<DaftarProduk> parseProduk(String responseBody) {
-  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-  return parsed
-      .map<DaftarProduk>((json) => DaftarProduk.fromJson(json))
-      .toList();
-}

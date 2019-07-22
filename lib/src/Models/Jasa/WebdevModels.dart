@@ -9,75 +9,69 @@ Webdev webdevFromJson(String str) => Webdev.fromJson(json.decode(str));
 String webdevToJson(Webdev data) => json.encode(data.toJson());
 
 class Webdev {
-  List<Datum> listdatum;
+    int apiStatus;
+    String apiMessage;
+    String apiAuthorization;
+    List<Datum> listdatum;
 
-  Webdev({
-    this.listdatum,
-  });
+    Webdev({
+        this.apiStatus,
+        this.apiMessage,
+        this.apiAuthorization,
+        this.listdatum,
+    });
 
-  factory Webdev.fromJson(Map<String, dynamic> json) => new Webdev(
-        listdatum:
-            new List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-      );
+    factory Webdev.fromJson(Map<String, dynamic> json) => new Webdev(
+        apiStatus: json["api_status"],
+        apiMessage: json["api_message"],
+        apiAuthorization: json["api_authorization"],
+        listdatum: new List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
+        "api_status": apiStatus,
+        "api_message": apiMessage,
+        "api_authorization": apiAuthorization,
         "data": new List<dynamic>.from(listdatum.map((x) => x.toJson())),
-      };
+    };
 }
 
 class Datum {
-  int id;
-  String judul;
-  String konten;
-  String tags;
-  String webSatu;
-  String webDua;
-  String webTiga;
-  String webEmpat;
-  String webLima;
-  String webEnam;
-  int cmsUsersId;
+    int id;
+    int kategoriId;
+    String nama;
+    String deskripsi;
+    String status;
+    int biayaAwal;
+    int biayaAkhir;
 
-  Datum({
-    this.id,
-    this.judul,
-    this.konten,
-    this.tags,
-    this.webSatu,
-    this.webDua,
-    this.webTiga,
-    this.webEmpat,
-    this.webLima,
-    this.webEnam,
-    this.cmsUsersId,
-  });
+    Datum({
+        this.id,
+        this.kategoriId,
+        this.nama,
+        this.deskripsi,
+        this.status,
+        this.biayaAwal,
+        this.biayaAkhir,
+    });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => new Datum(
+    factory Datum.fromJson(Map<String, dynamic> json) => new Datum(
         id: json["id"],
-        judul: json["judul"],
-        konten: json["konten"],
-        tags: json["tags"],
-        webSatu: json["web_satu"],
-        webDua: json["web_dua"],
-        webTiga: json["web_tiga"],
-        webEmpat: json["web_empat"],
-        webLima: json["web_lima"],
-        webEnam: json["web_enam"],
-        cmsUsersId: json["cms_users_id"],
-      );
+        kategoriId: json["kategori_id"],
+        nama: json["nama"],
+        deskripsi: json["deskripsi"],
+        status: json["status"],
+        biayaAwal: json["biaya_awal"],
+        biayaAkhir: json["biaya_akhir"],
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "id": id,
-        "judul": judul,
-        "konten": konten,
-        "tags": tags,
-        "web_satu": webSatu,
-        "web_dua": webDua,
-        "web_tiga": webTiga,
-        "web_empat": webEmpat,
-        "web_lima": webLima,
-        "web_enam": webEnam,
-        "cms_users_id": cmsUsersId,
-      };
+        "kategori_id": kategoriId,
+        "nama": nama,
+        "deskripsi": deskripsi,
+        "status": status,
+        "biaya_awal": biayaAwal,
+        "biaya_akhir": biayaAkhir,
+    };
 }
-

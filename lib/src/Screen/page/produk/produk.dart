@@ -1,9 +1,8 @@
-import 'package:auroralink/src/Screen/page/produk/widget/allProduk.dart';
-import 'package:auroralink/src/Screen/page/produk/widget/custom.dart';
-import 'package:auroralink/src/Screen/page/produk/widget/desktop.dart';
+import 'package:auroralink/src/Screen/page/produk/widget/hard.dart';
 import 'package:auroralink/src/Screen/page/produk/widget/includes/searchBar.dart';
-import 'package:auroralink/src/Screen/page/produk/widget/mobile.dart';
-import 'package:auroralink/src/Screen/page/produk/widget/website.dart';
+import 'package:auroralink/src/Screen/page/produk/widget/laptop.dart';
+import 'package:auroralink/src/Screen/page/produk/widget/pc.dart';
+import 'package:auroralink/src/Screen/page/produk/widget/software.dart';
 import 'package:flutter/material.dart';
 
 class Produk extends StatefulWidget {
@@ -17,7 +16,7 @@ class _ProdukState extends State<Produk> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     _produkController =
-        new TabController(vsync: this, initialIndex: 0, length: 5);
+        new TabController(vsync: this, initialIndex: 0, length: 4);
     super.initState();
   }
 
@@ -43,22 +42,20 @@ class _ProdukState extends State<Produk> with SingleTickerProviderStateMixin {
           indicatorColor: Colors.white,
           isScrollable: true,
           tabs: <Widget>[
-            new Tab(text: "All"),
-            new Tab(text: "Website"),
-            new Tab(text: "Desktop"),
-            new Tab(text: "Mobile"),
-            new Tab(text: "Custom"),
+            new Tab(text: "Software"),
+            new Tab(text: "Hardware"),
+            new Tab(text: "Paket PC"),
+            new Tab(text: "Laptop Bekas"),
           ],
         ),
       ),
       body: TabBarView(
         controller: _produkController,
         children: <Widget>[
-          new AllProdukList(),
-          new Website(),
-          new Desktop(),
-          new Mobile(),
-          new Custom(),
+          new Software(),
+          new Hardware(),
+          new PcRakitan(),
+          new Laptop(),
         ],
       ),
       // drawer: Drawer(

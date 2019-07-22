@@ -16,7 +16,7 @@ class _LauncherState extends State<Launcher> {
   }
 
   startLaunching() async {
-    var duration = const Duration(seconds: 5);
+    var duration = const Duration(seconds: 3);
     return new Timer(duration, () {
       Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (_) {
         return new HomePage();

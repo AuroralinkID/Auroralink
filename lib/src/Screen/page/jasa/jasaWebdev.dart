@@ -75,7 +75,7 @@ class _WebDevState extends State<WebDev> {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 12.0),
                                       child: Text(
-                                        snapshot.data.listdatum[index].judul,
+                                        snapshot.data.listdatum[index].nama,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -90,7 +90,7 @@ class _WebDevState extends State<WebDev> {
                                   children: <Widget>[
                                     Flexible(
                                       child: Text(
-                                        snapshot.data.listdatum[index].konten,
+                                        snapshot.data.listdatum[index].deskripsi,
                                       ),
                                     )
                                   ],

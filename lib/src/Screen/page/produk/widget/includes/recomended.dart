@@ -8,7 +8,7 @@ class Recomended extends StatefulWidget {
 class _RecomendedState extends State<Recomended> {
   @override
   Widget build(BuildContext context) {
-return Container(
+    return Container(
       height: 200.0,
       decoration: new BoxDecoration(boxShadow: [
         new BoxShadow(
@@ -25,7 +25,7 @@ return Container(
             Padding(
               padding: const EdgeInsets.only(left: 10.0, top: 10.0),
               child: Text(
-                "Recomended App",
+                "Recent View",
                 style: TextStyle(color: Color(0xff616161), fontSize: 16.0),
               ),
             ),
