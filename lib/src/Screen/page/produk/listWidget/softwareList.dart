@@ -1,7 +1,104 @@
+import 'package:auroralink/src/Bloc/Produk/ProdukBloc.dart';
 import 'package:auroralink/src/Models/Produk/ProdukModels.dart';
+import 'package:auroralink/src/Screen/page/produk/detailWidget/detailProduk.dart';
+import 'package:auroralink/src/Screen/property/IconPallete.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-Widget listlaptop1(AsyncSnapshot<DaftarProduk> snapshot) {
+
+class Software extends StatefulWidget {
+  @override
+  _SoftwareState createState() => _SoftwareState();
+}
+
+class _SoftwareState extends State<Software> {
+  @override
+  void initState() {
+    produkbloc.fetchAllProduk();
+    super.initState();
+  }
+
+  circularProggress() {
+    return Center(
+      child: SpinKitWanderingCubes(
+          color: Colors.lightBlue, shape: BoxShape.circle),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: SingleChildScrollView(
+            child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        InkWell(
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => DetailPage(
+                    soft: widget,
+                  ))),
+          child: StreamBuilder(
+            stream: produkbloc.semuaproduk,
+            builder: (context, AsyncSnapshot<DaftarProduk> snapshot) {
+              if (snapshot.hasData) {
+                return aplikasidesktoplist(snapshot);
+              } else if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              }
+              return Center(
+                child: Shimmer.fromColors(
+                  baseColor: IconPallete.menuCar,
+                  highlightColor: Colors.yellow,
+                  child: Text(
+                    'Loading...',
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        InkWell(
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => DetailPage(
+                    soft: null,
+                  ))),
+          child: StreamBuilder(
+            stream: produkbloc.semuaproduk,
+            builder: (context, AsyncSnapshot<DaftarProduk> snapshot) {
+              if (snapshot.hasData) {
+                return webapplist(snapshot);
+              } else if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              }
+              return Center();
+            },
+          ),
+        ),
+        InkWell(
+          onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => DetailPage(soft: null,))),
+          child: StreamBuilder(
+            stream: produkbloc.semuaproduk,
+            builder: (context, AsyncSnapshot<DaftarProduk> snapshot) {
+              if (snapshot.hasData) {
+                return mobapplist(snapshot);
+              } else if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              }
+              return Center();
+            },
+          ),
+        ),
+      ],
+    )));
+  }
+}
+
+//LIST WIDGET//
+
+Widget aplikasidesktoplist(AsyncSnapshot<DaftarProduk> snapshot) {
   return Container(
       height: 200.0,
       decoration: new BoxDecoration(boxShadow: [
@@ -19,7 +116,7 @@ Widget listlaptop1(AsyncSnapshot<DaftarProduk> snapshot) {
             Padding(
               padding: const EdgeInsets.only(left: 10.0, top: 10.0),
               child: Text(
-                "Laptop Bekas Terbaru",
+                "Kategori Desktop",
                 style: TextStyle(color: Color(0xff616161), fontSize: 16.0),
               ),
             ),
@@ -28,24 +125,17 @@ Widget listlaptop1(AsyncSnapshot<DaftarProduk> snapshot) {
                     scrollDirection: Axis.horizontal,
                     itemCount: snapshot.data.produk.length,
                     itemBuilder: (buildcontext, int index) {
-                      return Container(
+                      return Card(
                         child: Column(
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Container(
-                                // decoration: new BoxDecoration(boxShadow: [
-                                //   new BoxShadow(
-                                //     // color: Color(0xffeeeeee),
-                                //     blurRadius: 1.0,
-                                //     offset: new Offset(1.0, 1.0),
-                                //   ),
-                                // ]),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     Image.network(
-                                      "https://www.jakartanotebook.com/images/products/34/1020/40849/2/279/hard-crystal-matte-frosted-case-for-macbook-air-13-inch-a1932-black-1.jpg",
+                                      "https://auroralink.id/uploads/1/2019-06/main_device_image.png",
                                       height: 100,
                                       width: 200,
                                     ),
@@ -67,7 +157,7 @@ Widget listlaptop1(AsyncSnapshot<DaftarProduk> snapshot) {
           ]))));
 }
 
-Widget listlaptop2(AsyncSnapshot<DaftarProduk> snapshot) {
+Widget webapplist(AsyncSnapshot<DaftarProduk> snapshot) {
   return Container(
       height: 200.0,
       decoration: new BoxDecoration(boxShadow: [
@@ -85,7 +175,7 @@ Widget listlaptop2(AsyncSnapshot<DaftarProduk> snapshot) {
             Padding(
               padding: const EdgeInsets.only(left: 10.0, top: 10.0),
               child: Text(
-                "Laptop Bekas Termurah",
+                "Kategori WebApp",
                 style: TextStyle(color: Color(0xff616161), fontSize: 16.0),
               ),
             ),
@@ -94,24 +184,17 @@ Widget listlaptop2(AsyncSnapshot<DaftarProduk> snapshot) {
                     scrollDirection: Axis.horizontal,
                     itemCount: snapshot.data.produk.length,
                     itemBuilder: (buildcontext, int index) {
-                      return Container(
+                      return Card(
                         child: Column(
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Container(
-                                // decoration: new BoxDecoration(boxShadow: [
-                                //   new BoxShadow(
-                                //     color: Color(0xffeeeeee),
-                                //     blurRadius: 1.0,
-                                //     offset: new Offset(1.0, 1.0),
-                                //   ),
-                                // ]),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     Image.network(
-                                      "https://i1.wp.com/www.amd-id.com/wp-content/uploads/2014/11/lenovo-laptop-essential-g40-main.png",
+                                      "https://auroralink.id/uploads/1/2019-06/smpn_54.png",
                                       height: 100,
                                       width: 200,
                                     ),
@@ -133,16 +216,16 @@ Widget listlaptop2(AsyncSnapshot<DaftarProduk> snapshot) {
           ]))));
 }
 
-Widget listlaptop3(AsyncSnapshot<DaftarProduk> snapshot) {
+Widget mobapplist(AsyncSnapshot<DaftarProduk> snapshot) {
   return Container(
       height: 200.0,
-      // decoration: new BoxDecoration(boxShadow: [
-      //   new BoxShadow(
-      //     color: Color(0xffeeeeee),
-      //     blurRadius: 1.0,
-      //     offset: new Offset(1.0, 1.0),
-      //   ),
-      // ]),
+      decoration: new BoxDecoration(boxShadow: [
+        new BoxShadow(
+          color: Color(0xffeeeeee),
+          blurRadius: 1.0,
+          offset: new Offset(1.0, 1.0),
+        ),
+      ]),
       child: Card(
           child: InkWell(
               child: Column(
@@ -151,7 +234,7 @@ Widget listlaptop3(AsyncSnapshot<DaftarProduk> snapshot) {
             Padding(
               padding: const EdgeInsets.only(left: 10.0, top: 10.0),
               child: Text(
-                "Laptop Bekas Terlaris",
+                "Kategori MobileApp",
                 style: TextStyle(color: Color(0xff616161), fontSize: 16.0),
               ),
             ),
@@ -160,24 +243,17 @@ Widget listlaptop3(AsyncSnapshot<DaftarProduk> snapshot) {
                     scrollDirection: Axis.horizontal,
                     itemCount: snapshot.data.produk.length,
                     itemBuilder: (buildcontext, int index) {
-                      return Container(
+                      return Card(
                         child: Column(
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Container(
-                                // decoration: new BoxDecoration(boxShadow: [
-                                //   new BoxShadow(
-                                //     color: Color(0xffeeeeee),
-                                //     blurRadius: 1.0,
-                                //     offset: new Offset(1.0, 1.0),
-                                //   ),
-                                // ]),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     Image.network(
-                                      "https://meteran.net/wp-content/uploads/2018/09/2-HP-14-bw005AU-samping.png",
+                                      "https://auroralink.id/uploads/1/2019-06/smpn_54.png",
                                       height: 100,
                                       width: 200,
                                     ),

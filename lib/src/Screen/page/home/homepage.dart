@@ -1,6 +1,6 @@
 import 'package:auroralink/src/Models/AppBar/AuroraBar.dart';
 import 'package:auroralink/src/Models/Drawer/drawer.dart';
-import 'package:auroralink/src/Screen/body/body.dart';
+import 'package:auroralink/src/Screen/body/homebody/body.dart';
 import 'package:auroralink/src/Screen/bottom_nav/navbar/fab_bottom_app_bar.dart';
 import 'package:auroralink/src/Screen/bottom_nav/navbar/fab_with_icons.dart';
 import 'package:auroralink/src/Screen/bottom_nav/navbar/layout.dart';

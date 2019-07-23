@@ -29,37 +29,27 @@ class Home extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           new Container(
-            height: 200.0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                new Container(
-                  height: 200,
-                  width: 400,
-                  child: Card(
-                    color: Colors.white,
-                    child: SizedBox(
-                        height: 200.0,
-                        width: 400.0,
-                        child: Carousel(
-                          images: [
-                            NetworkImage(
-                                'https://cdn-images-1.medium.com/max/2000/1*GqdzzfB_BHorv7V2NV7Jgg.jpeg'),
-                            NetworkImage(
-                                'https://cdn-images-1.medium.com/max/2000/1*wnIEgP1gNMrK5gZU7QS0-A.jpeg'),
-                            NetworkImage(
-                                'https://auroralink.id/uploads/1/2019-06/smpn_54.png'),
-                            NetworkImage(
-                                'https://auroralink.id/uploads/1/2019-06/androif.png'),
-                            NetworkImage(
-                                'https://auroralink.id/uploads/1/2019-06/fshn.png'),
-                          ],
-                        )),
-                  ),
-                ),
-              ],
+            height: 200,
+            width: 400,
+            child: Card(
+              color: Colors.white,
+              child: SizedBox(
+                  height: 200.0,
+                  width: 400.0,
+                  child: Carousel(
+                    images: [
+                      NetworkImage(
+                          'https://cdn-images-1.medium.com/max/2000/1*GqdzzfB_BHorv7V2NV7Jgg.jpeg'),
+                      NetworkImage(
+                          'https://cdn-images-1.medium.com/max/2000/1*wnIEgP1gNMrK5gZU7QS0-A.jpeg'),
+                      NetworkImage(
+                          'https://auroralink.id/uploads/1/2019-06/smpn_54.png'),
+                      NetworkImage(
+                          'https://auroralink.id/uploads/1/2019-06/androif.png'),
+                      NetworkImage(
+                          'https://auroralink.id/uploads/1/2019-06/fshn.png'),
+                    ],
+                  )),
             ),
           ),
           new Container(

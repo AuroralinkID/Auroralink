@@ -1,9 +1,10 @@
-import 'package:auroralink/src/Screen/page/produk/widget/hard.dart';
-import 'package:auroralink/src/Screen/page/produk/widget/includes/searchBar.dart';
-import 'package:auroralink/src/Screen/page/produk/widget/laptop.dart';
-import 'package:auroralink/src/Screen/page/produk/widget/pc.dart';
-import 'package:auroralink/src/Screen/page/produk/widget/software.dart';
+
+import 'package:auroralink/src/Screen/page/produk/listWidget/searchBar.dart';
 import 'package:flutter/material.dart';
+import 'listWidget/hardwareList.dart';
+import 'listWidget/laptopList.dart';
+import 'listWidget/pcList.dart';
+import 'listWidget/softwareList.dart';
 
 class Produk extends StatefulWidget {
   @override
