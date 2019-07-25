@@ -1,4 +1,3 @@
-
 import 'package:auroralink/src/Screen/property/IconPallete.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -65,15 +64,16 @@ class _ITSupportState extends State<ITSupport> {
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return SupportDetail();
+                          return SupportDetail(
+                            gambar: snapshot.data.support[index].gambar,
+                            nama: snapshot.data.support[index].nama,
+                            deskripsi: snapshot.data.support[index].deskripsi,
+                          );
                         }));
                       },
                       child: Column(
                         children: <Widget>[
-                          Image.network(
-                            "https://auroralink.id/uploads/1/2019-06/main_device_image.png",
-                            fit: BoxFit.contain,
-                          ),
+                          Image.network(snapshot.data.support[index].gambar),
                         ],
                       ),
                     ),
@@ -149,8 +149,14 @@ class _ITSupportState extends State<ITSupport> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                SupportDetail()),
+                                            builder: (context) => SupportDetail(
+                                                  gambar: snapshot.data
+                                                      .support[index].gambar,
+                                                  nama: snapshot
+                                                      .data.support[index].nama,
+                                                  deskripsi: snapshot.data
+                                                      .support[index].deskripsi,
+                                                )),
                                       );
                                     },
                                   ),
@@ -171,11 +177,11 @@ class _ITSupportState extends State<ITSupport> {
 }
 
 class SupportDetail extends StatefulWidget {
-  final ITSupport value;
-  SupportDetail({
-    Key key,
-    this.value,
-  }) : super(key: key);
+  final String gambar;
+  final String nama;
+  final String deskripsi;
+  SupportDetail({Key key, this.gambar, this.nama, this.deskripsi})
+      : super(key: key);
   @override
   _SupportDetailState createState() => _SupportDetailState();
 }
@@ -199,13 +205,12 @@ class _SupportDetailState extends State<SupportDetail> {
               //   padding: EdgeInsets.only(bottom: 20.0),
               // ),
               Padding(
-                child: Image.network(
-                    "https://auroralink.id/uploads/1/2019-06/main_device_image.png"),
+                child: Image.network("${widget.gambar}"),
                 padding: EdgeInsets.all(10.0),
               ),
               Padding(
                 child: new Text(
-                  'Judul Detail',
+                  "${widget.nama}",
                   style: new TextStyle(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.left,
                 ),
@@ -213,7 +218,7 @@ class _SupportDetailState extends State<SupportDetail> {
               ),
               Padding(
                 child: new Text(
-                  'Deskripsi Detail',
+                  "${widget.deskripsi}",
                   style: new TextStyle(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.left,
                 ),
