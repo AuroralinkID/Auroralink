@@ -33,6 +33,7 @@ dependencies:
   gradient_app_bar: ^0.0.1
   font_awesome_flutter: ^8.5.0
   shimmer: ^1.0.0
+  flutter_rating_bar: ^1.1.0
 
   flutter:
     sdk: flutter
