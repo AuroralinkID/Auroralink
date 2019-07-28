@@ -1,6 +1,6 @@
 import 'package:auroralink/src/Screen/property/IconPallete.dart';
+import 'package:auroralink/src/Screen/property/indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:auroralink/src/Models/Jasa/SupportModel.dart';
 import 'package:auroralink/src/Bloc/Jasa/JasaSupportBloc.dart';
 
@@ -22,12 +22,6 @@ class _ITSupportState extends State<ITSupport> {
   //   super.dispose();
   // }
 
-  circularProggress() {
-    return Center(
-      child: SpinKitWanderingCubes(
-          color: Colors.lightBlue, shape: BoxShape.circle),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +35,7 @@ class _ITSupportState extends State<ITSupport> {
           return Text(snapshot.error.toString());
         }
         return Center(
-          child: circularProggress(),
+          child: Indicator(),
         );
       },
     ));

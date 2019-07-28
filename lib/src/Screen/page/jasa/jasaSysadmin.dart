@@ -1,8 +1,8 @@
 import 'package:auroralink/src/Bloc/Jasa/JasaSysadminBloc.dart';
 import 'package:auroralink/src/Models/Jasa/SysadminModels.dart';
 import 'package:auroralink/src/Screen/property/IconPallete.dart';
+import 'package:auroralink/src/Screen/property/indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class JasaSysadmin extends StatefulWidget {
   @override
@@ -16,17 +16,7 @@ class _JasaSysadminState extends State<JasaSysadmin> {
     super.initState();
   }
 
-  // @override
-  // void dispose() {
-  //   sysbloc.dispose();
-  //   super.dispose();
-  // }
-  circularProggress() {
-    return Center(
-      child: SpinKitWanderingCubes(
-          color: Colors.lightBlue, shape: BoxShape.circle),
-    );
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +30,7 @@ class _JasaSysadminState extends State<JasaSysadmin> {
           return Text(snapshot.error.toString());
         }
         return Center(
-          child: circularProggress(),
+          child: Indicator(),
         );
       },
     ));

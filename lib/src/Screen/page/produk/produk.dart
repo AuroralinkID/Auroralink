@@ -1,5 +1,6 @@
-
-import 'package:auroralink/src/Screen/page/produk/listWidget/searchBar.dart';
+import 'package:auroralink/src/Screen/page/produk/allProduk.dart';
+import 'package:auroralink/src/Screen/page/produk/searchBar.dart';
+import 'package:auroralink/src/Screen/property/IconPallete.dart';
 import 'package:flutter/material.dart';
 import 'listWidget/hardwareList.dart';
 import 'listWidget/laptopList.dart';
@@ -17,7 +18,7 @@ class _ProdukState extends State<Produk> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     _produkController =
-        new TabController(vsync: this, initialIndex: 0, length: 4);
+        new TabController(vsync: this, initialIndex: 0, length: 5);
     super.initState();
   }
 
@@ -40,19 +41,51 @@ class _ProdukState extends State<Produk> with SingleTickerProviderStateMixin {
         ],
         bottom: new TabBar(
           controller: _produkController,
-          indicatorColor: Colors.white,
+          indicatorColor: IconPallete.menuRide,
           isScrollable: true,
           tabs: <Widget>[
-            new Tab(text: "Software"),
-            new Tab(text: "Hardware"),
-            new Tab(text: "Paket PC"),
-            new Tab(text: "Laptop Bekas"),
-          ],
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Icon(Icons.list, size: 30, color: Colors.white,),
+                  Text("Semua Produk", style: TextStyle(color: Colors.white),)
+                ],
+              ),),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Icon(Icons.code, size: 30, color: Colors.white,),
+                  Text("Software", style: TextStyle(color: Colors.white),)
+                ],
+              ),),
+              Container(
+              child: Column(
+                children: <Widget>[
+                  Icon(Icons.memory, size: 30, color: Colors.white,),
+                  Text("Hardware", style: TextStyle(color: Colors.white),)
+                ],
+              ),),
+              Container(
+              child: Column(
+                children: <Widget>[
+                  Icon(Icons.desktop_windows, size: 30, color: Colors.white),
+                  Text("Desktop / PC", style: TextStyle(color: Colors.white),)
+                ],
+              ),),
+              Container(
+              child: Column(
+                children: <Widget>[
+                  Icon(Icons.laptop, size: 30, color: Colors.white),
+                  Text("Laptop", style: TextStyle(color: Colors.white),)
+                ],
+              ),),
+            ],
         ),
       ),
       body: TabBarView(
         controller: _produkController,
         children: <Widget>[
+          new AllProdukList(),
           new Software(),
           new Hardware(),
           new PcRakitan(),

@@ -15,3 +15,22 @@ class ProdukBloc{
   }
 }
 final produkbloc = ProdukBloc();
+
+
+// The base class for the different types of items the list can contain.
+// abstract class Kategori {}
+
+// // A ListItem that contains data to display a heading.
+// class KategoriItem implements Kategori {
+//   final String kategori;
+
+//   KategoriItem(this.kategori);
+// }
+
+// A ListItem that contains data to display a message.
+// class MessageItem implements Kategori {
+//   final String sender;
+//   final String body;
+
+//   MessageItem(this.sender, this.body);
+// }

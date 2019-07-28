@@ -1,4 +1,4 @@
-import 'package:auroralink/src/Screen/page/produk/listWidget/searchBar.dart';
+import 'package:auroralink/src/Screen/page/produk/searchBar.dart';
 import 'package:auroralink/src/Screen/property/IconPallete.dart';
 import 'package:flutter/material.dart';
 import 'jasaWebdev.dart' as web;

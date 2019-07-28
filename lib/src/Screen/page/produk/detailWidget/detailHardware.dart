@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class DetailPage extends StatefulWidget {
+class Detailhardware extends StatefulWidget {
   final String nama;
   final String gambar;
   final String deskripsi;
@@ -14,7 +14,7 @@ class DetailPage extends StatefulWidget {
   final String f5;
   final String f6;
   final String v1;
-  DetailPage({
+  Detailhardware({
     Key key,
     @required this.nama,
     this.gambar,
@@ -28,10 +28,10 @@ class DetailPage extends StatefulWidget {
     this.v1,
   }) : super(key: key);
   @override
-  _DetailPageState createState() => _DetailPageState();
+  _DetailhardwareState createState() => _DetailhardwareState();
 }
 
-class _DetailPageState extends State<DetailPage>
+class _DetailhardwareState extends State<Detailhardware>
     with SingleTickerProviderStateMixin {
   List<Tab> _tabs;
   List<Widget> _pages;
@@ -212,89 +212,88 @@ class _DetailPageState extends State<DetailPage>
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: new Container(
-            child: new Card(
-              child: Column(
-                children: <Widget>[
-                  Image.network(
-                    "${widget.gambar}",
-                    fit: BoxFit.cover,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: new Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        new Row(
-                          children: <Widget>[
-                            new Text(
-                              "${widget.nama}",
-                              style: TextStyle(fontSize: 15.0),
-                            )
-                          ],
-                        ),
-                        new Row(
-                          children: <Widget>[
-                            new Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: new Icon(
-                                Icons.favorite,
-                                color: Colors.red,
-                              ),
-                            ),
-                            new Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: new Icon(
-                                Icons.picture_as_pdf,
-                                color: Colors.lightBlue,
-                              ),
-                            ),
-                            new Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: new Icon(
-                                Icons.share,
-                                color: Colors.green,
-                              ),
-                            ),
-                            new Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: new Icon(
-                                Icons.shopping_cart,
-                                color: Colors.amber,
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
+    return Scaffold(
+        body: SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Image.network(
+            "${widget.gambar}",
+            fit: BoxFit.cover,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                new Row(
+                  children: <Widget>[
+                    new Text(
+                      "${widget.nama}",
+                      style: TextStyle(fontSize: 15.0),
+                    )
+                  ],
+                ),
+                new Row(
+                  children: <Widget>[
+                    new Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: new Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Column(
-                      children: <Widget>[
-                        new TabBar(
-                          isScrollable: true,
-                          controller: _controller,
-                          tabs: _tabs,
-                          indicatorColor: Colors.white,
-                        ),
-                        new Divider(
-                          height: 1.0,
-                        ),
-                        new SizedBox.fromSize(
-                          size: const Size.fromHeight(220.0),
-                          child: new TabBarView(
-                            controller: _controller,
-                            children: _pages,
-                          ),
-                        ),
-                      ],
+                    new Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: new Icon(
+                        Icons.picture_as_pdf,
+                        color: Colors.lightBlue,
+                      ),
                     ),
+                    new Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: new Icon(
+                        Icons.share,
+                        color: Colors.green,
+                      ),
+                    ),
+                    new Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: new Icon(
+                        Icons.shopping_cart,
+                        color: Colors.amber,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Column(
+              children: <Widget>[
+                new TabBar(
+                  isScrollable: true,
+                  controller: _controller,
+                  tabs: _tabs,
+                  indicatorColor: IconPallete.menuBluebird,
+                ),
+                new Divider(
+                  height: 1.0,
+                ),
+                new SizedBox.fromSize(
+                  size: const Size.fromHeight(220.0),
+                  child: new TabBarView(
+                    controller: _controller,
+                    children: _pages,
                   ),
-                ],
-              ),
-            )));
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ));
   }
 }
 
